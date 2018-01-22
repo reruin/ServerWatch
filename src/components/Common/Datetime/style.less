@@ -1,0 +1,107 @@
+.angularjs-datetime-picker {
+  color: #333;
+  font: normal 14px sans-serif;
+  border: 1px solid #ddd;
+  display: inline-block;
+  background: #fff;
+  z-index:2001;
+}
+.angularjs-datetime-picker > .adp-month {
+  text-align: center;
+  line-height: 22px;
+  padding: 5px 10px;
+  background: #fcfcfc;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  color:#495060;
+  font-size:12px;
+}
+.angularjs-datetime-picker > .adp-month > button {
+  color: #999;
+  font-family: sans-serif;
+  outline: none;
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size:16px;
+  width:16px;
+}
+.angularjs-datetime-picker > .adp-month > button:hover {
+  color: #333;
+}
+.angularjs-datetime-picker > .adp-month > button.adp-prev {
+  left: 10px;
+}
+.angularjs-datetime-picker > .adp-month > button.adp-next {
+  right: 10px;
+}
+.angularjs-datetime-picker > .adp-month > button.adp-prev-m {
+  left: 30px;
+}
+.angularjs-datetime-picker > .adp-month > button.adp-next-m {
+  right: 30px;
+}
+.angularjs-datetime-picker > .adp-days {
+  width: 210px; /* 30 x 7 */
+  margin: 10px;
+  text-align: center;
+  font-size:12px;
+}
+.angularjs-datetime-picker > .adp-days > .adp-day-of-week, .angularjs-datetime-picker > .adp-days > .adp-day {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px solid transparent;
+  width: 30px;
+  line-height: 28px;
+  float: left;
+  position: relative;
+}
+.angularjs-datetime-picker > .adp-days > .adp-day-of-week {
+  font-weight: bold;
+}
+.angularjs-datetime-picker > .adp-days > .adp-day:not(.selectable) {
+  opacity: 0.15;
+  cursor: default;
+}
+.angularjs-datetime-picker > .adp-days > .adp-day.selectable  {
+  cursor: pointer;
+}
+.angularjs-datetime-picker > .adp-days > .adp-day.selected {
+  background: #e0e0e0;
+}
+.angularjs-datetime-picker > .adp-days > .adp-day.selectable:hover {
+  background: #eee;
+}
+.angularjs-datetime-picker > .adp-days:after {
+  content: '';
+  display: block;
+  clear: left;
+  height: 0;
+}
+
+.angularjs-datetime-picker input[type=range] {
+  width: 150px;
+}
+
+.angularjs-datetime-picker > .adp-days > .adp-day.today:after{
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2d8cf0;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+.angularjs-datetime-picker > .adp-day{
+  position: relative;
+}
+
+
+.hourLabel,.minutesLabel{
+  float:left;width:50px;
+}

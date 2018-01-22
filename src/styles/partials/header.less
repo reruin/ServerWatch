@@ -1,0 +1,104 @@
+.site-head {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  z-index: 59;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .08)!important;
+  .logo {
+    display: inline-block;
+    line-height: 64px;
+    height: 64px;
+
+    a {
+      display: inline-block;
+      color: #666;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 16px;
+      text-align: center;
+      padding: 0 18px;
+    }
+  }
+  .menu {
+    line-height: 64px;
+    height: 64px;
+    display: inline-block;
+    a {
+      padding: 0 12px;
+      display: inline-block;
+    }
+
+    a.menu-selected {
+      color: #108ee9; // border-bottom: 2px solid #108ee9 ;
+    }
+  }
+  .toolbar {
+    padding: 20px;
+
+    .icon {
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+      max-width: 100%;
+      font-size: 24px;
+      line-height: 24px;
+      color: #999;
+    }
+
+    float:right;
+
+    .sl-select-dropdown {
+      min-width: 100px;
+      right: 0;
+    }
+  }
+
+
+  .more {
+    height: 16px;
+    width: 20px;
+    display: inline-block;
+    position: relative;
+    ransform: rotate(0);
+    transition: background .5s ease;
+    background: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 2' xml:space='preserve'><polyline points='0,0 16,0' style='stroke:#666666;stroke-width:2'/></svg>") center center repeat-x;
+    background-clip: content-box;
+    margin: 18px;
+
+    &.active {
+      background: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 2' xml:space='preserve'><polyline points='0,0 16,0' style='sstroke-width:2'/></svg>") center center repeat-x;
+    }
+
+    &:before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      width: 20px;
+      height: 2px;
+      background: #666666;
+      -webkit-transform-origin: 20px;
+      transform-origin: 20px;
+      transition: background .5s cubic-bezier(.77, .2, .05, 1), opacity .55s ease, transform .5s cubic-bezier(.77, .2, .05, 1), width .5s;
+    }
+
+    &:after {
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      width: 20px;
+      height: 2px;
+      background: #666666;
+      -webkit-transform-origin: 20px;
+      transform-origin: 20px;
+      transition: background .5s cubic-bezier(.77, .2, .05, 1), opacity .55s ease, transform .5s cubic-bezier(.77, .2, .05, 1), width .5s;
+    }
+
+    &.active:after {
+      transform: rotate(45deg);
+    }
+    &.active:before {
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="page">
+  <div class="section" ng-if="$ctrl.data.installed">
+    <div class="section-title">
+      <div class="section-title-text">移除</div>
+      <p>请执行以下脚本自动完成移除</p>
+    </div>
+    <div class="section-content col-2">
+      <sl-spin sl-position="center" ng-hide="$ctrl.ready"></sl-spin>
+      <div sl-input-container class="flex">
+        <textarea ng-bind="$ctrl.data.uninstall_script" rows="5"></textarea>
+      </div>
+    </div>
+    <div class="section-footer">
+      <p style="font-size:12px;color:#333;margin:5px 0 20px 0;">如果已经无法链接到主机，请点击【确定】直接删除数据</p>
+      <button class="sl-btn sl-btn-primary sl-btn-lg" ng-click="$ctrl.save()">确定</button>
+    </div>
+  </div>
+  <div class="section" ng-if="!$ctrl.data.installed">
+    <div class="section-title">
+      <div class="section-title-text">移除监控</div>
+      <p>确定移除监控吗？</p>
+    </div>
+
+    <div class="section-footer">
+      <button class="sl-btn sl-btn-primary sl-btn-lg" ng-click="$ctrl.save()">确定</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>

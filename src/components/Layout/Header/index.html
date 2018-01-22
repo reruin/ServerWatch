@@ -1,0 +1,20 @@
+<header class="site-head">
+  <div class="logo">
+      <a href="/servers">Server Watch</a>
+  </div>
+  <div class="menu">
+    <a href="{{menu.url}}" ng-if="!menu.hide" ng-class="{'menu-selected':menu.selected}" ng-repeat="menu in $ctrl.menu">{{menu.title}}</a>
+  </div>
+  <div class="toolbar">
+    <div class="sl-dropdown">
+      <div class="sl-dropdown-rel"><i class="icon fas fa-user-circle"></i></div>
+      <div class="sl-select-dropdown">
+        <ul class="sl-dropdown-menu">
+          <li class="sl-dropdown-item"><a target="_blank" href="https://github.com/reruin/ServerWatch">BUG 反馈</a></li>
+          <li class="sl-dropdown-item"><a href="/setting">设置</a></li>
+          <li class="sl-dropdown-item" ng-click="$ctrl.signout()">登出</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

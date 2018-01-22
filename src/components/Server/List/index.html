@@ -1,0 +1,52 @@
+<div class="page node">
+  <div class="section">
+    <div class="section-title">
+      <div class="section-title-text">监控列表</div>
+      <p>当前在线 {{$ctrl.page.online_count}} / {{$ctrl.data.length}} , 上行速度总计 {{$ctrl.page.tx_count | byte}}/S , 下行速度总计 {{$ctrl.page.rx_count | byte}}/S</p>
+    </div>
+    <div class="section-content">
+      <sl-progress-linear ng-show="$ctrl.process"></sl-progress-linear>
+      <div>
+        <div class="item" ng-repeat="row in $ctrl.data">
+          <a class="card" href="/server/{{row.id}}">
+            <div class="header">
+              <div class="base">
+                <div class="line">
+                  <span class="label">{{row.label}}</span>
+                  <span class="state state-{{row.state}}"></span>
+                  <span class="span">{{row.snapshot.uptime | time}}</span>
+                  <span class="loc">{{row.location}} {{row.isp}}</span>
+                </div>
+                <div class="line" ng-if="row.installed">
+                  <span class="span" ng-bind="row.ip"></span>
+                  <span class="span">{{row.snapshot.net_total | byte}}/s ↑↓</span>
+                </div>
+                <div class="line" ng-if="!row.installed">
+                  <span>请安装监控脚本</span>
+                </div>
+              </div>
+            </div>
+            <div class="detail">
+              <div>
+                <span>负载</span>
+                <chart-lite data="row.usage.load" color="['102,170,0','254,57,18','51,102,204']" fill="false"></chart-lite>
+              </div>
+              <div>
+                <span>内存</span>
+                <chart-lite data="row.usage.ram" color="['85,136,85']"></chart-lite>
+              </div>
+              <div>
+                <span>CPU</span>
+                <chart-lite data="row.usage.cpu" color="['187,68,204']"></chart-lite>
+              </div>
+              <div>
+                <span>IO</span>
+                <chart-lite data="row.usage.io" color="['214,99,0']"></chart-lite>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

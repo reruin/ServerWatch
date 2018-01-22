@@ -1,0 +1,79 @@
+.sl-spin-center{
+  position: absolute;
+  width:100%;
+  height: 100%;
+
+  background: rgba(255,255,255,.7);
+  text-align: center;
+}
+
+.sl-spin-dot {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-animation: slRotate 1.2s infinite linear;
+          animation: slRotate 1.2s infinite linear;
+}
+.sl-spin-center .sl-spin-dot{
+  margin:auto;
+  top:50%;
+  position: absolute;
+  margin-top: -10px;
+}
+
+.sl-spin-dot i {
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+  background-color: #1890ff;
+  -webkit-transform: scale(0.75);
+      -ms-transform: scale(0.75);
+          transform: scale(0.75);
+  display: block;
+  position: absolute;
+  opacity: 0.3;
+  -webkit-animation: slSpinMove 1s infinite linear alternate;
+          animation: slSpinMove 1s infinite linear alternate;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+.sl-spin-dot i:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+.sl-spin-dot i:nth-child(2) {
+  right: 0;
+  top: 0;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.sl-spin-dot i:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.sl-spin-dot i:nth-child(4) {
+  left: 0;
+  bottom: 0;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+
+
+@-webkit-keyframes slSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slSpinMove {
+  to {
+    opacity: 1;
+  }
+}

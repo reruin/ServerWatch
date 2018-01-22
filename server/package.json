@@ -7,7 +7,7 @@
     "start": "node app",
     "dev": "./node_modules/.bin/nodemon app",
     "prd": "pm2 start app",
-    "build": "pkg . -t node9-win-x64",
+    "build": "pkg . -t node9-win-x64 && pkg . -t node9-linux-x64",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -31,7 +31,7 @@
   },
   "pkg": {
     "assets": [
-      "../build/**/*",
+      "../src/build/**/*",
       "./shell/*"
     ]
   }

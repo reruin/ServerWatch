@@ -1,0 +1,63 @@
+<div class="page">
+  <div class="section">
+    <div class="section-title">
+      <div class="section-title-text">修改</div>
+    </div>
+    <form name="form">
+    <div class="section-content col-2">
+      <sl-spin sl-position="center" ng-hide="$ctrl.ready"></sl-spin>
+
+      <div class="row">
+        <div sl-input-container class="flex">
+          <label>显示名称</label>
+          <input type="text" name="label" placeholder="******" required ng-model="$ctrl.data.label">
+          <div class="input-message" ng-messages="form.label.$error">
+            <div ng-message-exp="['required']">名称不能为空</div>
+          </div>
+        </div>
+      </div>
+      <div class="row" layout-margin>
+        <div sl-input-container class="flex">
+          <label>保存历史记录，设置为'否'时，将删除之前的记录</label>
+          <sl-radio class="sl-radio">
+            <span>
+              <input ng-model="$ctrl.data.recordable" value="1" type="radio" name="recordable" />
+              <i>是</i>
+            </span>
+            <span>
+              <input ng-model="$ctrl.data.recordable" value="0" type="radio" name="recordable" />
+              <i>否</i>
+            </span>
+          </sl-radio>
+        </div>
+      </div>
+
+      <div class="row" ng-if="$ctrl.data.recordable == 1">
+        <div sl-input-container class="flex">
+          <label>入库记录间隔，单位 S（每隔该时段保存一次监控记录）</label>
+          <input type="text" name="record_interval" placeholder="" required ng-model="$ctrl.data.record_interval">
+          <div class="input-message" ng-messages="form.record_interval.$error">
+            <div ng-message-exp="['required']">不能为空</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" ng-if="$ctrl.data.recordable == 1">
+        <div sl-input-container class="flex">
+          <label>入库记录上限（超出自动覆盖较早的记录）</label>
+          <input type="text" name="record_limit" placeholder="" required ng-model="$ctrl.data.record_limit">
+          <div class="input-message" ng-messages="form.record_limit.$error">
+            <div ng-message-exp="['required']">不能为空</div>
+          </div>
+        </div>
+        <p style="font-size:12px;">预计可保存记录时长：{{ ($ctrl.data.record_limit * $ctrl.data.record_interval) | time}}</p>
+      </div>
+    </div>
+    <div class="section-footer">
+      <button class="sl-btn sl-btn-primary" ng-disabled="form.$invalid" ng-click="$ctrl.save()">确定</button>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>

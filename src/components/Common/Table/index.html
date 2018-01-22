@@ -1,0 +1,64 @@
+<div class="sl-table">
+  <div class="sl-table-container">
+    <div class="filter-button" ng-click="$ctrl.popupFliter()"><i class="icon fas fa-filter"></i></div>
+    <table class="sl-table row-select">
+      <thead class="md-head" ng-if="$ctrl.options.enableHead">
+        <tr class="md-row">
+          <th class="md-column" ng-class="{active:column.filterOption.data}" ng-repeat="column in $ctrl.columns">
+            <span ng-bind="column.name"></span>
+            <i ng-if="column.filter" class="icon fas fa-filter" ng-click="$ctrl.popupFliter(column)" ng-class="{select:column.filterOption.data}"></i>
+            <!--           <div class="filter-dropdown" ng-show="column.filterOption.display" ng-if="column.filter">
+            <input class="sl-input" ng-model="column.filterOption.data" type="text" />
+            <button class="sl-btn sl-btn-primary" ng-click="$ctrl.search()">搜索</button>
+          </div> -->
+          </th>
+        </tr>
+      </thead>
+      <tbody class="md-body">
+        <tr ng-repeat="row in $ctrl.data" class="md-row">
+          <td data-title="{{column.name}}" class="md-cell" ng-repeat="column in $ctrl.columns" ng-bind-html="$ctrl.parse(row,column)"></td>
+        </tr>
+        <tr class="nodata" ng-if="!$ctrl.data.length">
+          <td colspan="{{$ctrl.columns.length}}">No Data</td>
+        </tr>
+      </tbody>
+    </table>
+    <sl-progress-linear ng-show="$ctrl.process" md-mode="query"></sl-progress-linear>
+  </div>
+  <div class="sl-pagination">
+    <div class="limit-select" ng-if="$ctrl.options.enableLimit">
+      <span class="label"></span>
+      <select ng-change="$ctrl.changeLimit()" class="md-table-select" ng-model="$ctrl.query.limit" ng-options="v.id as v.label for v in $ctrl.options.limitOptions">
+      </select>
+    </div>
+    <div class="sl-pager" ng-if="$ctrl.page.total>1">
+      <button class="sl-button" ng-click="$ctrl.prev()" ng-disabled="$ctrl.page.current<=1">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <span class="label">
+      <input type="text" on-keyenter="$ctrl.setPage()" ng-model="$ctrl.page.pageto" autocomplete="off" spellcheck="false" /> / {{$ctrl.page.total}} </span>
+      <button class="sl-button" ng-click="$ctrl.next()" ng-disabled="$ctrl.page.current>=$ctrl.page.total">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="sl-table-filter" ng-class="{active:$ctrl.activeFilter}">
+    <form name="form">
+      <div class="header">
+        <i class="fas fa-filter"></i>
+        <span>筛选</span>
+        <a class="close" ng-click="$ctrl.hideFliter()"><i class="fas fa-times"></i></a>
+      </div>
+      <div class="filter-dropdown" ng-repeat="item in $ctrl.filterOption">
+        <label ng-bind="item.name"></label>
+        <input class="sl-input" ng-if="item.type=='input'" ng-model="item.data" type="text" sl-autofocus="item.display" />
+        <input class="sl-input" type="text" ng-if="item.type=='date'" ng-model="item.data" datetime-picker date-only date-format="yyyy-MM-dd" sl-autofocus="item.display" />
+        <select class="sl-input" ng-if="item.type=='select'" ng-options="v.code as v.name for v in item.def" ng-model="item.data"></select>
+        <!-- <sl-select ng-if="item.type=='select'" ng-model="item.data" sl-def="item.data" sl-options="item.def"></sl-select> -->
+      </div>
+      <div class="footer">
+        <button class="sl-btn sl-btn-primary" ng-click="$ctrl.search()">搜索</button>
+      </div>
+    </form>
+  </div>
+</div>

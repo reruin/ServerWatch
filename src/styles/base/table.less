@@ -1,0 +1,239 @@
+.sl-table-container {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  .filter-button{
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition:opacity 0.3s;
+    position: absolute;
+    right: 0;
+    padding:10px;
+    z-index:1;
+  }
+}
+
+table.sl-table {
+  width: 100%;
+  border-spacing: 0;
+  overflow: hidden;
+  tr {
+    // height: 56px;
+    transition: background-color .2s;
+  }
+  th:first-child,
+  td:first-child {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  th {
+    position: relative;
+  }
+  th.active {
+    // z-index: 999;
+  }
+
+
+  th i {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    position: relative;
+    padding: 5px 7px;
+
+    &.select {
+      color: @sitenav-color
+    }
+  }
+  thead tr {
+    color: rgba(0, 0, 0, .54);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  tbody tr {
+    td {
+      border-top: 1px solid rgba(0, 0, 0, .12);
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+  td {
+    color: rgba(0, 0, 0, .87);
+  }
+  td,
+  th {
+    vertical-align: middle;
+    text-align: left;
+    padding:12px;
+    // word-break: break-all;
+  }
+  
+  td.center{
+    text-align: center;
+  }
+  tr.nodata td{
+    font-size:12px;color:#999;text-align: center;
+  }
+  // td:nth-child(n+2):nth-last-child(n+2),
+  // th:nth-child(n+2):nth-last-child(n+2) {
+  //   padding: 0 56px 0 0;
+  // }
+}
+
+table.sl-table.row-select {
+  tbody tr:hover {
+    background-color: fade(@sitenav-color , 8%)!important;
+  }
+}
+
+sl-table {
+  .sl-table-filter {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1001;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    transform: translateX(70%);
+    transition: all .3s ease-out;
+
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0%);
+    }
+    .header {
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      i {
+        color: #666;
+        font-size: 12px;
+        margin-right: 5px;
+      }
+      a.close {
+        float: right;
+        color: #999;
+        display: inline-block;
+        cursor: pointer;
+      }
+      a:hover {
+        i {
+          color: @sitenav-color;
+        }
+      }
+    }
+
+    .footer {
+      margin-top: 12px;
+      text-align: center;
+    }
+  }
+
+  .filter-dropdown {
+    padding: 8px; //
+    input {
+      width: 100%;
+      margin-right: 8px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      padding: 8px 0;
+    }
+  }
+}
+
+.responsive() {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead  {
+    display: none;
+  }
+
+  tr {
+    border-bottom: 1px solid #ccc;
+    height:auto !important;
+    padding-top: 5px;
+    padding-bottom:10px;
+    position: relative;
+  }
+
+  td {
+    border: none !important;
+    position: relative;
+    white-space: normal;
+    text-align: left;
+    padding:2px !important;
+    font-size: 12px !important;
+  }
+
+  td:before {
+    /* Now like a table header */
+   
+    width: 100px;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: right;
+    display: inline-block;
+    content: attr(data-title);
+    color:#999;
+    text-transform:uppercase;
+  }
+  tr:not(.nodata) td:last-child{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform:translateY(-50%);
+  }
+  tr.nodata{
+    td{
+      height:64px;
+      line-height: 64px;
+    }
+    td:before{
+      content:'';width:0;
+    }
+  }
+
+  a{
+    padding:5px 0;
+    border-bottom:1px solid @sitenav-color;
+    color:@sitenav-color;
+    display: inline-block;
+    border-radius: 3px;
+  }
+
+  td:last-child{
+    padding-right:10px;
+    a{
+      padding:5px 10px;
+      border:1px solid @sitenav-color;
+    }
+  }
+
+  .filter-button{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media(max-width: 768px) {
+  .sl-table-container {
+    .responsive()
+  }
+}

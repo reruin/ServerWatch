@@ -1,0 +1,246 @@
+html,body{
+    color: rgba(0,0,0,0.87);
+    background-color: rgb(250,250,250) ;
+}
+body {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    color: @font-primary;
+    font-size: 14px!important;
+    line-height: 1.5!important;
+    overflow-x: hidden;
+}
+
+article, aside, blockquote, body, button, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, section, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+*,*:before,*:after{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+li{
+    list-style: none;
+}
+
+
+*:focus {
+    outline: none!important;
+}
+
+.ion:before, .ionicons:before {
+}
+a {
+    text-decoration: none;
+}
+
+
+.sl-button sl-icon {
+    color: @font-primary;
+}
+
+input:focus {
+    outline: none;
+}
+
+// Typography
+// ---------
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+h1, h2, h3 {
+    margin-top: .8rem; margin-bottom: .8rem;
+}
+
+a{
+    color:#404040;
+    transition: all 0.3s;
+}
+a:hover{
+    color:#108ee9;
+}
+
+.sl-display-4 { font-size: 64px; margin-top: 1rem; margin-bottom: 1rem;}
+.sl-display-3 { font-size: 48px; margin-top: 1rem; margin-bottom: 1rem;}
+.sl-display-2 { font-size: 36px; margin-top: 1rem; margin-bottom: 1rem;}
+.sl-display-1 { font-size: 28px; margin-top: 1rem; margin-bottom: 1rem;}
+
+.sl-title, .sl-lead {
+    margin: 0!important; padding: 0!important;
+    font-weight: 400;
+}
+.sl-lead {
+    font-size: 20px;
+}
+.sl-subhead {
+    padding: 0!important;
+}
+sl-divider {
+    margin-top: .4rem;
+}
+
+
+.list-unstyled {
+    list-style: none;
+}
+
+
+
+// additional type classes
+.text-uppercase { text-transform: uppercase; }
+.text-bold {font-weight: 500}
+.text-bolder {font-weight: 700}
+.text-lowercase {text-transform: lowercase}
+.text-light {font-weight: 300}
+.text-normal {font-weight: 400}
+.text-center {text-align: center}
+
+.filler {
+    display: block;
+    height: 7px;
+    background: #999;
+}
+.filler-sm {
+    height: 5px!important;
+}
+.filler-xs {
+    height: 2px!important;
+}
+
+
+// Buttons
+// --------
+.sl-button {
+    padding: 0rem .6rem;
+    
+    &.sl-small {
+        font-size: 12px;
+        min-height: 1.9rem;
+        min-width: 4rem;
+        padding: 0 .5rem;
+        line-height: 1.2;
+        [class^=ion] {
+            font-size: 1rem;
+            line-height: 1.55;
+        }
+    }
+    &.sl-large {
+        font-size: 1.2rem;
+        min-height: 2.8rem;
+        min-width: 5.5rem;
+        line-height: 1.4;
+    }
+}
+
+.sl-button {
+    margin: 0 6px;
+    height: 40px;
+    min-width: 0;
+    line-height: 24px;
+    padding: 8px;
+    width: 40px;
+    border-radius: 50%;
+    user-select: none;
+    background: transparent;
+    border:none;
+    position: relative;
+    cursor: pointer;
+}
+
+.sl-button.sl-fab {
+    [class^=ion] {
+        font-size: 32px;
+        position: relative;
+        top: -5px;
+    }
+    &.sl-mini {
+        [class^=ion] {
+            font-size: 20px;
+            top: 2px;
+            left: -1px;
+        }
+    }
+    &.sl-xs {
+        min-height: 1rem;
+        height: 1.8rem; width: 1.8rem;
+        min-width: 1rem;
+        line-height: 1.8rem;
+        [class^=ion] {
+            font-size: 14px;
+            left:-7.5px;
+            top:4.5px;
+
+        }
+    }
+}
+.sl-button-group {
+    margin-left: 5px; margin-right: 5px;
+    .sl-button {
+        margin-left: 0; margin-right: 0;
+
+    }
+}
+
+
+// Inputs
+// ------
+sl-input-container {
+    > sl-icon {
+        font-size: 25px;
+        margin-top: -6px;
+    }
+}
+
+sl-card-content{
+    padding-top:12px !important;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.15);
+}
+
+::selection {
+    background: #404040;
+    color: #fff;
+}
+
+.icon{
+    display: inline-block;
+    margin: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+    min-height: 24px;
+    min-width: 24px;
+}
+.ivu-dropdown{
+    .ivu-select-dropdown{
+        transform-origin: center top;
+        display: none;
+    }
+    &:hover .ivu-select-dropdown{
+        display: block;
+        position: absolute;
+        left: -1px;top: 44px;
+        margin:0;
+    }
+}
+
+
+.row{
+    box-sizing: border-box;
+    display: flex;
+}
+
+.sl-margin{
+    margin:10px 0;
+}
+

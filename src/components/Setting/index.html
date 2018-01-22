@@ -1,0 +1,35 @@
+<div class="page">
+  <form name="form">
+    <div class="section">
+      <div class="section-title">
+        <div class="section-title-text">设置</div>
+      </div>
+      <div class="section-content col-2">
+        <div class="row">
+          <div sl-input-container class="flex">
+            <label>用户名</label>
+            <input type="text" name="username" placeholder="" ng-model="$ctrl.data.username">
+          </div>
+        </div>
+
+        <div class="row">
+          <div sl-input-container class="flex">
+            <label>密码</label>
+            <input type="password" name="password" placeholder="" ng-model="$ctrl.data.password">
+          </div>
+        </div>
+
+        <div class="row">
+          <div sl-input-container class="flex">
+            <label>端口</label>
+            <input type="text" name="port" placeholder="" ng-model="$ctrl.data.port">
+          </div>
+        </div>
+
+      </div>
+      <div class="section-footer">
+        <button ng-click="$ctrl.update()" class="sl-btn sl-btn-primary" ng-disabled="form.$invalid">确定</button>
+      </div>
+    </div>
+  </form>
+</div>

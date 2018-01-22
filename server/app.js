@@ -30,7 +30,7 @@ app.use(bodyparser({
 
 app.use(json())
 
-let web_path = path.resolve(__dirname, '../build')
+let web_path = path.resolve(__dirname, '../src/build')
 
 app.use(koaStatic(web_path))
 

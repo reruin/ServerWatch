@@ -1,0 +1,144 @@
+<div class="page detail">
+  <div class="section">
+    <div class="section-title">
+      <div class="section-title-text">{{$ctrl.data.label}}</div>
+      <p ng-if="$ctrl.data.installed">
+        <span ng-bind="$ctrl.data.ip"></span>
+        <span ng-bind="$ctrl.data.location"></span>
+        <span ng-bind="$ctrl.data.isp"></span>
+      </p>
+      <p ng-if="!$ctrl.data.installed">请先安装监控脚本</p>
+      <div class="act">
+        <a href="/server/{{$ctrl.data.id}}/edit"><i class="fas fa-edit"></i>编辑</a>
+        <a href="/server/{{$ctrl.data.id}}/remove"><i class="fas fa-trash-alt"></i>移除</a>
+      </div>
+    </div>
+    <div class="section-content" ng-if="$ctrl.data.installed">
+      <sl-spin sl-position="center" ng-hide="$ctrl.ready"></sl-spin>
+      <div>
+        <h3>概况</h3>
+        <ul class="info">
+          <li>
+            <span>系统运行</span>
+            <span ng-bind="$ctrl.snapshot.uptime"></span>
+          </li>
+          <li>
+            <span>操作系统</span>
+            <span><span ng-bind="$ctrl.snapshot.os_name"></span> <span ng-bind="$ctrl.snapshot.os_arch"></span></span>
+          </li>
+          <li>
+            <span>内核版本</span>
+            <span ng-bind="$ctrl.snapshot.os_kernel"></span>
+          </li>
+          <li>
+            <span>文件句柄</span>
+            <span><span ng-bind="$ctrl.snapshot.file_handles"></span> / <span ng-bind="$ctrl.snapshot.file_handles_limit"></span></span>
+          </li>
+          <li>
+            <span>进程数</span>
+            <span ng-bind="$ctrl.snapshot.processes"></span>
+          </li>
+          <li>
+            <span>会话数</span>
+            <span ng-bind="$ctrl.snapshot.sessions">0</span>
+          </li>
+          <li>
+            <span>CPU 型号</span>
+            <span ng-bind="$ctrl.snapshot.cpu_name"></span>
+          </li>
+          <li>
+            <span>CPU 主频</span>
+            <span>{{$ctrl.snapshot.cpu_cores}} x {{$ctrl.snapshot.cpu_freq}} MHz</span>
+          </li>
+          <li>
+            <span>网络 ↑↓</span>
+            <span><span ng-bind="$ctrl.snapshot.net_current | byte"> / S</span></span>
+          </li>
+          <li>
+            <span>出网总计 ↑</span>
+            <span ng-bind="$ctrl.snapshot.tx | byte"></span>
+          </li>
+          <li>
+            <span>入网总计 ↓</span>
+            <span ng-bind="$ctrl.snapshot.rx | byte"></span>
+          </li>
+          <li>
+            <span>连接数</span>
+            <span ng-bind="$ctrl.snapshot.connections"></span>
+          </li>
+          <li>
+            <span>磁盘</span>
+            <span>{{ $ctrl.snapshot.disk_usage | byte}} / {{ $ctrl.snapshot.disk_total | byte}}</span>
+          </li>
+          <li>
+            <span>RAM</span>
+            <span>{{ $ctrl.snapshot.ram_usage | byte}} / {{ $ctrl.snapshot.ram_total | byte}}</span>
+          </li>
+          <li>
+            <span>IPv4</span>
+            <span>{{ $ctrl.snapshot.ipv4}}</span>
+          </li>
+          <li>
+            <span>IPv6</span>
+            <span>{{ $ctrl.snapshot.ipv6}}</span>
+          </li>
+        </ul>
+      </div>
+      <section>
+        <h3>进程</h3>
+        <table class="sl-table">
+          <thead>
+            <tr>
+              <th>进程名</th>
+              <th>CPU</th>
+              <th>内存占用</th>
+              <th>运行时间</th>
+              <th>状态</th>
+              <th>所有者</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in $ctrl.snapshot.processes_array">
+              <td>{{item[5]}}</td>
+              <td>{{item[1]}}</td>
+              <td>{{item[2]}}</td>
+              <td>{{item[3]}}</td>
+              <td>{{item[4]}}</td>
+              <td>{{item[0]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>内存</h3>
+        <chart update="$ctrl.snapshot.timestamp" config="$ctrl.chart.mem"></chart>   
+      </section>
+      <section>
+        <h3>CPU</h3>
+        <chart update="$ctrl.snapshot.timestamp" config="$ctrl.chart.cpu"></chart>
+      </section>
+      <section>
+        <h3>IO</h3>
+        <chart update="$ctrl.snapshot.timestamp" config="$ctrl.chart.io"></chart>
+      </section>
+      <section>
+        <h3>负载</h3>
+        <chart update="$ctrl.snapshot.timestamp" config="$ctrl.chart.load"></chart>
+      </section>
+      <section>
+        <h3>网络</h3>
+        <chart update="$ctrl.snapshot.timestamp" config="$ctrl.chart.nw"></chart>
+      </section>
+    </div>
+    <div ng-if="!$ctrl.data.installed">
+      <div class="row" layout-margin>
+        <div sl-input-container class="flex">
+          <label>脚本</label>
+          <textarea ng-bind="$ctrl.data.script" rows="5"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

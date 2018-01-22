@@ -1,0 +1,18 @@
+<sl-progress-linear ng-show="$ctrl.process"></sl-progress-linear>
+<div class="sl-pagination">
+  <div class="limit-select" ng-if="$ctrl.options.enableLimit">
+    <span class="label"></span>
+    <select ng-change="$ctrl.changeLimit()" class="md-table-select" ng-model="$ctrl.query.limit" ng-options="v.id as v.label for v in $ctrl.options.limitOptions">
+    </select>
+  </div>
+  <div class="sl-pager" ng-if="$ctrl.page.total>1">
+    <button class="sl-button" ng-click="$ctrl.prev()" ng-disabled="$ctrl.page.current<=1">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <span class="label">
+      <input type="text" on-keyenter="$ctrl.setPage()" ng-model="$ctrl.page.pageto" autocomplete="off" spellcheck="false" /> / {{$ctrl.page.total}} </span>
+    <button class="sl-button" ng-click="$ctrl.next()" ng-disabled="$ctrl.page.current>=$ctrl.page.total">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</div>

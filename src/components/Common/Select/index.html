@@ -1,0 +1,7 @@
+<div class="sl-select" ng-class="{'open':$ctrl.isOpen == true}">
+  <div class="sl-select-title" ng-bind="$ctrl.current.name" ng-click="$ctrl.open()"></div>
+  <div class="sl-select-mask" ng-click="$ctrl.close()"></div>
+  <div class="sl-select-menu">
+    <div class="sl-select-option" ng-repeat="v in $ctrl.options" ng-click="$ctrl.changeOption(v)" ng-class="{'selected':v.code == $ctrl.current.code}" ng-bind="v.name"></div>
+  </div>
+</div>

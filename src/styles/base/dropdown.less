@@ -1,0 +1,22 @@
+.sl-dropdown{
+  position: relative;
+  .sl-select-dropdown{
+    position: absolute;
+    display: none;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    li{
+      padding:12px 20px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    // li:hover{
+    //   background:fade(@sitenav-color , 10%);
+    // }
+  }
+  &:hover{
+    .sl-select-dropdown{
+      display: block;
+    }
+  }
+}

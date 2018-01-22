@@ -1,0 +1,21 @@
+<div class="page page-signin">
+  <div class="signin-box">
+    <header></header>
+
+    <form name="form">
+      <div class="signin-body">
+        <h4>Server Watch</h4>
+        <input type="hidden" name="source" value="form" />
+        <div class="form-group">
+          <input type="text" name="username" placeholder="用户名" class="form-control" ng-model="$ctrl.data.username" />
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" placeholder="密码" class="form-control" ng-model="$ctrl.data.password" />
+        </div>
+      </div>
+      <div class="signin-footer">
+        <button class="sl-btn sl-btn-primary sl-btn-lg sl-btn-block sl-margin" ng-click="$ctrl.signin()">登录</button>
+      </div>
+    </form>
+  </div>
+</div>

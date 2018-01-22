@@ -1,0 +1,236 @@
+.sl-input-container {
+  margin: 4px 8px;
+  padding-bottom: 28px;
+
+  label{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    order: 1;
+    pointer-events: none;
+    -webkit-font-smoothing: antialiased;
+    padding-left: 3px;
+    padding-right: 0;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    transform: scale(.875);
+    transform-origin: left center;
+    display: block;
+  }
+
+  input,
+  textarea,
+  .sl-select-title,
+  .sl-radio,
+  .sl-title
+   {
+    display: block;
+    margin-top: 0;
+    background: none;
+    padding: 2px 2px 1px;
+    border-width: 0 0 1px;
+    line-height: 26px;
+    height: 30px;
+    -ms-flex-preferred-size: 26px;
+    border-radius: 0;
+    border-style: solid;
+    width: 100%;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.87);
+    border-color: rgba(0, 0, 0, 0.12);
+    margin: 2px 0;
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  .input-message {
+    position: relative;
+    overflow: hidden;
+    font-size: 12px;
+    color: #f5222d;
+    padding-top: 5px;
+    transform: scale(.875);
+    transform-origin: left center;
+    opacity: 0;
+    transition:all 0.3s;
+    position: absolute;
+  }
+
+  .ng-dirty.ng-invalid{
+    border-color: #f5222d;
+  }
+  .ng-dirty.ng-invalid ~ .input-message{
+    opacity: 1;
+  }
+
+  &.focused {
+    input,
+    .sl-select-title,
+    .sl-radio,
+    textarea {
+      border-bottom: 2px solid @sitenav-color;
+      padding-bottom: 0;
+    }
+
+    label{
+      color: @sitenav-color;
+    }
+  }
+}
+
+
+
+
+.sl-select {
+  position: relative;
+  .sl-select-menu {
+    background: #fff;
+    z-index:1;
+    min-width: 136px;
+    min-height: 48px;
+    max-height: 256px;
+    overflow-y: auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform-origin: left top;
+    transform: scaleY(0);
+    transition: all .4s cubic-bezier(.25,.8,.25,1);
+    transition-duration: .15s;
+
+    .sl-select-option {
+      padding: 0 16px;
+      height: 42px;
+      line-height: 42px;
+      font-size: 14px;
+      transition: background .15s linear;
+      color: rgba(33, 33, 33, 0.87);
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &:hover {
+        background: rgb(238, 238, 238);
+      }
+
+      &.selected{
+        color:@sitenav-color;
+      }
+    }
+  }
+
+  .sl-select-title{
+    cursor: pointer;
+  }
+
+  .sl-select-mask{
+    opacity: 0;position: fixed;width:100%;height:100%;top:0;left:0;
+    display: none;
+  }
+
+  &.open {
+    .sl-select-menu{
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    .sl-select-mask{
+      display: block;
+    }
+  }
+}
+
+.sl-input{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  padding: 4px 11px;
+  width: 100%;
+  height: 32px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  transition: all .3s;
+
+  &:hover,&:focus{
+    border-color:@sitenav-color;
+  }
+}
+
+.sl-radio{
+  &>span{
+    position: relative;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  input[type=radio]{
+    opacity: 0;
+    position: absolute;
+    top:0;left:0;width:100%;height:100%;
+  }
+  i{
+    font-style: normal;
+    pointer-events: none;
+  }
+  input[type=radio]+i {
+      position: relative;
+      display: inline-block;
+      height:20px;
+      line-height: 20px;
+/*      width: 14px;
+      height: 14px;
+      border:1px solid #ccc;
+      border-radius: 14px;
+      margin-left:3px;*/
+      padding-left:22px;
+      &:before{
+        content:' ';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 2px;
+        top: 2px;
+       /* margin-left: -4px;
+        margin-top: -4px;*/
+        border: 1px solid #ccc;//@main-color;
+        border-radius: 16px;
+        box-sizing: border-box;
+        background: #f3f3f3;
+        transition:all 0.3s;
+      }
+      &:after{
+        content:' ';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        left: 6px;
+        top: 6px;
+        /*margin-left: -4px;
+        margin-top: -4px;*/
+        background: @sitenav-color;
+        border-radius: 10px;
+        transform:scale(0);
+        transition:transform 0.3s;
+      }
+  }
+
+  input[type=radio]:checked+i{
+    &:before{
+      border-color:@sitenav-color;
+      background: #fff;
+    }
+    &:after{
+      transform:scale(1);
+    }
+  }
+}
